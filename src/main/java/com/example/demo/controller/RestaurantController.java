@@ -10,24 +10,24 @@ import java.util.List;
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
 
-    private final RestaurantRepository repository;
+    private final RestaurantRepository restaurantRepository;
 
-    public RestaurantController(RestaurantRepository repository) {
-        this.repository = repository;
+    public RestaurantController(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
     }
 
     @GetMapping
     public List<Restaurant> getAllRestaurants() {
-        return repository.findAll();
+        return restaurantRepository.findAll();
     }
 
     @PostMapping
     public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-        return repository.save(restaurant);
+        return restaurantRepository.save(restaurant);
     }
 
     @DeleteMapping("/{id}")
     public void deleteRestaurant(@PathVariable Long id) {
-        repository.deleteById(id);
+        restaurantRepository.deleteById(id);
     }
 }
